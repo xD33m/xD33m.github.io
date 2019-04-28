@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Times</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <link rel="icon" href="http://image.flaticon.com/icons/svg/148/148935.svg">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../Times/style.css" />
+    
+    <script src="../Times/moment-with-locales.js"></script>
+    <script src="../Times/moment-timezone-with-data-2012-2022.js"></script>
+    <script src="../Times/app.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div id="allFlex">
+            <div >
+                <label for="tokyoTime">Tokyo</label>
+                <h2 id="tokyoTime"></h2>
+            </div>
+            <div>
+                <label for="germanyTime">Germany</label>
+                <h2 id="germanyTime"></h2>
+            </div>
+            <div>
+                <label for="laTime">Los Angeles</label>
+                <h2 id="laTime"></h2>
+            </div>
+            <div>  
+                <label for="nyTime">New York</label>
+                <h2 id="nyTime"></h2>
+            </div>
+        </div>
+		<h1 id="jakeStatus"></h1>
+		<h1 id="grimmmzStatus"></h1>
+    </div>
+</body>
+<script>
+    moment.locale("de");   
+    var update = function () {
+        tokyo = moment().tz('Asia/Tokyo').format('LTS');
+        germany = moment().tz('Europe/Paris').format('LTS');
+        la = moment().tz('America/Los_Angeles').format('LTS');
+        ny = moment().tz('America/New_York').format('LTS');
+
+        document.getElementById('tokyoTime').innerHTML = tokyo
+        document.getElementById('germanyTime').innerHTML = germany
+        document.getElementById('laTime').innerHTML = la
+        document.getElementById('nyTime').innerHTML = ny
+    }
+
+    var jakeOnlineCheck = function () {
+        $.ajax({ // jakes user ID 11249217
+        url: 'https://api.twitch.tv/helix/streams?client_id=11249217&user_login=jakenbakelive',
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader('Client-ID', 'kzkjmy0i3yp6hb814robifymb365rb')
+        }, success: function(data){
+            if(Object.keys(data.data).length == 0){
+				$(function() {
+					$('#jakeStatus').html('Jake is <span style="color: red"> OFFLINE </span>');
+				});
+            }else{
+				$(function() {
+					$('#jakeStatus').html('Jake is <span style="color: green"> ONLINE </span>');
+				});
+            }
+        }
+        }) 
+    }
+	var grimmmzOnlineCheck = function () {
+        $.ajax({
+        url: 'https://api.twitch.tv/helix/streams?user_login=grimmmz',
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader('Client-ID', 'kzkjmy0i3yp6hb814robifymb365rb')
+        }, success: function(data){
+            console.log(data)
+            if(Object.keys(data.data).length == 0){
+				$(function() {
+					$('#grimmmzStatus').html('Grimmmz is <span style="color: red"> OFFLINE </span>');
+				});
+            }else{
+				$(function() {
+					$('#grimmmzStatus').html('Grimmmz is <span style="color: green"> ONLINE </span>');
+				});
+            }
+        }
+        }) 
+    }
+    $(document).ready(function() {
+        update();
+		jakeOnlineCheck();
+		grimmmzOnlineCheck();
+        setInterval(update, 1000)
+        setInterval(jakeOnlineCheck, 5000)
+		setInterval(grimmmzOnlineCheck, 5000)
+    })
+    
+
+</script>
+</html>
