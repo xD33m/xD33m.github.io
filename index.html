@@ -65,13 +65,13 @@
             xhr.setRequestHeader('Client-ID', 'kzkjmy0i3yp6hb814robifymb365rb')
         }, success: function(data){
             if(Object.keys(data.data).length == 0){
-				$(function() {
-					$('#jakeStatus').html('Jake is <span style="color: red"> OFFLINE </span>');
-				});
+		$(function() {
+			$('#jakeStatus').html('Jake is <span style="color: red"> OFFLINE </span>');
+		});
             }else{
-				$(function() {
-					$('#jakeStatus').html('Jake is <span style="color: green"> ONLINE </span>');
-				});
+		$(function() {
+			$('#jakeStatus').html('Jake is <span style="color: green"> ONLINE </span>');
+		});
             }
         }
         }) 
@@ -82,26 +82,25 @@
         beforeSend: function(xhr) {
             xhr.setRequestHeader('Client-ID', 'kzkjmy0i3yp6hb814robifymb365rb')
         }, success: function(data){
-            console.log(data)
             if(Object.keys(data.data).length == 0){
-				$(function() {
-					$('#grimmmzStatus').html('Grimmmz is <span style="color: red"> OFFLINE </span>');
-				});
+		$(function() {
+			$('#grimmmzStatus').html('Grimmmz is <span style="color: red"> OFFLINE </span>');
+		});
             }else{
-				$(function() {
-					$('#grimmmzStatus').html('Grimmmz is <span style="color: green"> ONLINE </span>');
-				});
+		$(function() {
+			$('#grimmmzStatus').html('Grimmmz is <span style="color: green"> ONLINE </span>');
+		});
             }
         }
         }) 
     }
     $(document).ready(function() {
         update();
-		jakeOnlineCheck();
-		grimmmzOnlineCheck();
+	jakeOnlineCheck();
+	grimmmzOnlineCheck();
         setInterval(update, 1000)
         setInterval(jakeOnlineCheck, 5000)
-		setInterval(grimmmzOnlineCheck, 5000)
+	setInterval(grimmmzOnlineCheck, 5000)
     })
     
 
