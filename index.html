@@ -83,10 +83,10 @@
     });
     moment.locale("de");   
     var update = function () {
-        tokyo = moment().tz('Asia/Tokyo').format('H:mm:ss');
-        germany = moment().tz('Europe/Paris').format('H:mm:ss');
-        la = moment().tz('America/Los_Angeles').format('H:mm:ss');
-        ny = moment().tz('America/New_York').format('H:mm:ss');
+        tokyo = moment().tz('Asia/Tokyo').format('HH:mm:ss');
+        germany = moment().tz('Europe/Paris').format('HH:mm:ss');
+        la = moment().tz('America/Los_Angeles').format('HH:mm:ss');
+        ny = moment().tz('America/New_York').format('HH:mm:ss');
 
         document.getElementById('tokyoTime').innerHTML = tokyo
         document.getElementById('germanyTime').innerHTML = germany
