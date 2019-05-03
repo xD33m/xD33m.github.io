@@ -22,27 +22,27 @@
 
 
 </head>
-<body id="t" class="offline">
+<body id="t" class="offline" >
     <div class="container">
         <div id="allFlex">
             <div >
-                <label for="tokyoTime"><span id="letterT">T</span>oky<span id="letterO">o</span></label>
+                <label id="tokyoLabel" for="tokyoTime"><span id="letterT" >T</span>oky<span id="letterO">o</span></label>
                 <h2 id="tokyoTime"></h2>
             </div>
             <div>
-                <label for="germanyTime">Germany</label>
+                <label id="germLabel" for="germanyTime">Germany</label>
                 <h2 id="germanyTime"></h2>
             </div>
             <div>
-                <label for="laTime">Los Angeles</label>
+                <label id="laLabel" for="laTime">Los Angeles</label>
                 <h2 id="laTime"></h2>
             </div>
             <div>  
-                <label for="nyTime">New York</label>
+                <label id="nyLabel" for="nyTime">New York</label>
                 <h2 id="nyTime"></h2>
             </div>
         </div>
-	<h1 id="jakeStatus">Jake is <span style="color: red"> OFFLINE </span></h1>
+		<h1 id="jakeStatus">Jake is <span style="color: red"> OFFLINE </span></h1>
         <h1 id="grimmmzStatus">Grimmmz is <span style="color: red"> OFFLINE </span></h1>
         <!-- <div id="messageBox" class="sendmessage">
             <h1 style="text-align: center;font-family: 'Open Sans', sans-serif;">Press Space to start</h1>
@@ -131,14 +131,56 @@
         }
         }) 
     }
-    
+
+    var tokyoWeather = function () {
+        $.ajax({
+        url: 'https://api.openweathermap.org/data/2.5/weather?q=Tokyo&APPID=9ded4d8a3ca84e83be4462cc2ae065b2',
+        success: function(data){
+            var tempInGrad= (data.main.temp - 273.15);
+            var htmltoadd = "<sup>" +tempInGrad.toFixed(0) + "°C</sup>"
+            document.getElementById('tokyoLabel').insertAdjacentHTML("beforeend", htmltoadd)
+        }
+        }) 
+    }
+    var germanyWeather = function () {
+        $.ajax({
+        url: 'https://api.openweathermap.org/data/2.5/weather?q=stuttgart&APPID=9ded4d8a3ca84e83be4462cc2ae065b2',
+        success: function(data){
+            var tempInGrad= (data.main.temp - 273.15);
+            var htmltoadd = "<sup>" +tempInGrad.toFixed(0) + "°C</sup>"
+            document.getElementById('germLabel').insertAdjacentHTML("beforeend", htmltoadd)
+        }
+        }) 
+    }
+    var laWeather = function () {
+        $.ajax({
+        url: 'https://api.openweathermap.org/data/2.5/weather?id=5368381&APPID=9ded4d8a3ca84e83be4462cc2ae065b2',
+        success: function(data){
+            var tempInGrad= (data.main.temp - 273.15);
+            var htmltoadd = "<sup>" +tempInGrad.toFixed(0) + "°C</sup>"
+            document.getElementById('laLabel').insertAdjacentHTML("beforeend", htmltoadd)
+        }
+        }) 
+    }
+    var nyWeather = function () {
+        $.ajax({
+        url: 'https://api.openweathermap.org/data/2.5/weather?id=5128581&APPID=9ded4d8a3ca84e83be4462cc2ae065b2',
+        success: function(data){
+            var tempInGrad= (data.main.temp - 273.15);
+            var htmltoadd = "<sup>" +tempInGrad.toFixed(0) + "°C</sup>"
+            document.getElementById('nyLabel').insertAdjacentHTML("beforeend", htmltoadd)
+        }
+        }) 
+    }
     
     $(document).ready(function() {
-        
         update();
-		jakeOnlineCheck();
-		grimmmzOnlineCheck();
-        
+        jakeOnlineCheck();
+        grimmmzOnlineCheck();
+        tokyoWeather();
+        germanyWeather();
+        laWeather();
+        nyWeather();
         setInterval(update, 1000)
         setInterval(jakeOnlineCheck, 5000)
 		setInterval(grimmmzOnlineCheck, 5000)
