@@ -321,7 +321,7 @@
 
                     // Async, so no guarantee of order in array.
                     this.audioContext.decodeAudioData(buffer, function (index, audioData) {
-                        this.soundFx[index] = audioData;
+                        // this.soundFx[index] = audioData;
                     })//.bind(this, sound));
                 }
             }
