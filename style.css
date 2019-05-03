@@ -46,7 +46,9 @@ body {
     display: none;
   }
   
-  
+  #main-frame-error {
+    visibility: hidden;
+  }
   /* Offline page */
   
   .offline .interstitial-wrapper {
@@ -60,6 +62,7 @@ body {
   }
   
   .offline .runner-container {
+    /* visibility: hidden; */
     /* height: 150px;
     max-width: 600px;
     overflow: hidden;
