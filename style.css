@@ -1,3 +1,8 @@
+.container {
+
+  width: 80%;
+
+}
 h2{
     font-size: 50px;
 }
@@ -19,12 +24,18 @@ body {
     background: grey;
 }
 
+sup {
+  font-size: 30px;
+  top: -27px;
+}
+
 #allFlex {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 30%;
+    margin-top: 25%;
     flex-wrap: wrap;
+    margin-right: 10px;
 }
 
 /* Copyright 2013 The Chromium Authors. All rights reserved.
