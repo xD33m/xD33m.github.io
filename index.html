@@ -72,6 +72,12 @@
 
     $("#letterG").dblclick(function(){
         document.getElementById("randomDiv").style.display="block";
+        if(document.getElementById("randomDiv").style.display == "block"){
+            $('#randomCityInput').val('')
+            document.getElementById("randomCityInput").style.display = "block";
+            $("#randomCityLabel").empty();
+            $("#randomCityLabel").append("Enter: Region/City");
+        }
     });
 
     $("#letterY").dblclick(function(){
