@@ -1,25 +1,78 @@
 $(document).ready(function() {
-var trex = document.getElementById("main-frame-error");
-    $("#letterT").dblclick(function(){
-        trex.style.visibility="visible";
-    });
-
-    $("#letterO").dblclick(function(){
-        trex.style.visibility="hidden";
-    });
-
-    $("#letterG").dblclick(function(){
-        document.getElementById("randomDiv").style.display="block";
-        if(document.getElementById("randomDiv").style.display == "block"){
-            $('#randomCityInput').val('')
-            document.getElementById("randomCityInput").style.display = "block";
-            $("#randomCityLabel").empty();
-            $("#randomCityLabel").append("Enter: Region/City");
+    var trex = document.getElementById("main-frame-error");
+    var touchtime = 0;
+    $("#letterT").on("click", function() {
+        if (touchtime == 0) {
+            // set first click
+            touchtime = new Date().getTime();
+        } else {
+            // compare first click to this click and see if they occurred within double click threshold
+            if (((new Date().getTime()) - touchtime) < 800) {
+                // double click occurred
+                trex.style.visibility="visible";
+                touchtime = 0;
+            } else {
+                // not a double click so set as a new first click
+                touchtime = new Date().getTime();
+            }
         }
     });
 
-    $("#letterY").dblclick(function(){
-        document.getElementById("randomDiv").style.display="none";
+    $("#letterO").on("click", function() {
+        if (touchtime == 0) {
+            // set first click
+            touchtime = new Date().getTime();
+        } else {
+            // compare first click to this click and see if they occurred within double click threshold
+            if (((new Date().getTime()) - touchtime) < 800) {
+                // double click occurred
+                trex.style.visibility="hidden";
+                touchtime = 0;
+            } else {
+                // not a double click so set as a new first click
+                touchtime = new Date().getTime();
+            }
+        }
+    });
+
+    $("#letterG").on("click", function() {
+        if (touchtime == 0) {
+            // set first click
+            touchtime = new Date().getTime();
+        } else {
+            // compare first click to this click and see if they occurred within double click threshold
+            if (((new Date().getTime()) - touchtime) < 800) {
+                // double click occurred
+                document.getElementById("randomDiv").style.display="block";
+                if(document.getElementById("randomDiv").style.display == "block"){
+                    $('#randomCityInput').val('')
+                    document.getElementById("randomCityInput").style.display = "block";
+                    $("#randomCityLabel").empty();
+                    $("#randomCityLabel").append("Enter: Region/City");
+                }
+                touchtime = 0;
+            } else {
+                // not a double click so set as a new first click
+                touchtime = new Date().getTime();
+            }
+        }
+    });
+
+    $("#letterY").on("click", function() {
+        if (touchtime == 0) {
+            // set first click
+            touchtime = new Date().getTime();
+        } else {
+            // compare first click to this click and see if they occurred within double click threshold
+            if (((new Date().getTime()) - touchtime) < 800) {
+                // double click occurred
+                document.getElementById("randomDiv").style.display="none";
+                touchtime = 0;
+            } else {
+                // not a double click so set as a new first click
+                touchtime = new Date().getTime();
+            }
+        }
     });
 
     var randomCityName = null;
