@@ -1,3 +1,176 @@
+$(document).ready(function() {
+var trex = document.getElementById("main-frame-error");
+    $("#letterT").dblclick(function(){
+        trex.style.visibility="visible";
+    });
+
+    $("#letterO").dblclick(function(){
+        trex.style.visibility="hidden";
+    });
+
+    $("#letterG").dblclick(function(){
+        document.getElementById("randomDiv").style.display="block";
+        if(document.getElementById("randomDiv").style.display == "block"){
+            $('#randomCityInput').val('')
+            document.getElementById("randomCityInput").style.display = "block";
+            $("#randomCityLabel").empty();
+            $("#randomCityLabel").append("Enter: Region/City");
+        }
+    });
+
+    $("#letterY").dblclick(function(){
+        document.getElementById("randomDiv").style.display="none";
+    });
+
+    var randomCityName = null;
+    var validCity = function() {
+        randomCityName = $('#randomCityInput').val();
+        if(randomCityName != null){
+            if(moment.tz.zone(randomCityName) != null){
+                randomCity = moment().tz(randomCityName).format('HH:mm:ss');
+                document.getElementById('randomCityTime').innerHTML = randomCity;
+                return true;
+            }else {
+                return false;
+            }
+        }
+    }
+    moment.locale("de");   
+    var update = function () {
+        tokyo = moment().tz('Asia/Tokyo').format('HH:mm:ss');
+        germany = moment().tz('Europe/Paris').format('HH:mm:ss');
+        la = moment().tz('America/Los_Angeles').format('HH:mm:ss');
+        ny = moment().tz('America/New_York').format('HH:mm:ss');
+        if(validCity()){
+            document.getElementById('randomCityTime').style.display = "block";
+            document.getElementById('randomCityTime').innerHTML = randomCity;
+        }else {
+            document.getElementById('randomCityTime').style.display = "none";
+        }
+        document.getElementById('tokyoTime').innerHTML = tokyo
+        document.getElementById('germanyTime').innerHTML = germany
+        document.getElementById('laTime').innerHTML = la
+        document.getElementById('nyTime').innerHTML = ny
+    }
+    $('#randomCityInput').keypress(function(evt){
+            evt = evt || window.event;
+            if(evt.keyCode == 13){
+                if(validCity()){
+                    var inputField = document.getElementById("randomCityInput");
+                    inputField.style.display="none";
+                    var regexStr = randomCityName.match(/\/([A-z])\w+/g)[0].substring(1).replace('_', ' ');
+                    $.ajax({
+                        url: 'https://api.openweathermap.org/data/2.5/weather?q='+ regexStr +'&APPID=9ded4d8a3ca84e83be4462cc2ae065b2',
+                        success: function(data){
+                            var tempInGrad= (data.main.temp - 273.15);
+                            var htmltoadd = "<sup>" +tempInGrad.toFixed(0) + "°C</sup>";
+                            document.getElementById('randomCityLabel').insertAdjacentHTML("beforeend", htmltoadd);
+                            }
+                    })
+                    $("#randomCityLabel").empty();
+                    $("#randomCityLabel").append(regexStr);
+                }else {
+                    $("#randomCityLabel").empty();
+                    $("#randomCityLabel").append("Region/City is invalid");
+                }
+                
+            }
+    })
+
+    var jakeOnlineCheck = function () {
+        $.ajax({ // jakes user ID 11249217
+        url: 'https://api.twitch.tv/helix/streams?client_id=11249217&user_login=jakenbakelive',
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader('Client-ID', 'kzkjmy0i3yp6hb814robifymb365rb')
+        }, success: function(data){
+            if(Object.keys(data.data).length == 0){
+				$(function() {
+					$('#jakeStatus').html('Jake is <span style="color: red"> OFFLINE </span>');
+				});
+            }else{
+				$(function() {
+					$('#jakeStatus').html('Jake is <span style="color: green"> ONLINE </span>');
+				});
+            }
+        }
+        }) 
+    }
+
+	var grimmmzOnlineCheck = function () {
+        $.ajax({
+        url: 'https://api.twitch.tv/helix/streams?user_login=grimmmz',
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader('Client-ID', 'kzkjmy0i3yp6hb814robifymb365rb')
+        }, success: function(data){
+           
+            if(Object.keys(data.data).length == 0){
+				$(function() {
+					$('#grimmmzStatus').html('Grimmmz is <span style="color: red"> OFFLINE </span>');
+				});
+            }else{
+				$(function() {
+					$('#grimmmzStatus').html('Grimmmz is <span style="color: green"> ONLINE </span>');
+				});
+            }
+        }
+        }) 
+    }
+
+    var tokyoWeather = function () {
+        $.ajax({
+        url: 'https://api.openweathermap.org/data/2.5/weather?q=Tokyo&APPID=9ded4d8a3ca84e83be4462cc2ae065b2',
+        success: function(data){
+            var tempInGrad= (data.main.temp - 273.15);
+            var htmltoadd = "<sup>" +tempInGrad.toFixed(0) + "°C</sup>"
+            document.getElementById('tokyoLabel').insertAdjacentHTML("beforeend", htmltoadd)
+        }
+        }) 
+    }
+
+    var germanyWeather = function () {
+        $.ajax({
+        url: 'https://api.openweathermap.org/data/2.5/weather?q=stuttgart&APPID=9ded4d8a3ca84e83be4462cc2ae065b2',
+        success: function(data){
+            var tempInGrad= (data.main.temp - 273.15);
+            var htmltoadd = "<sup>" +tempInGrad.toFixed(0) + "°C</sup>"
+            document.getElementById('germLabel').insertAdjacentHTML("beforeend", htmltoadd)
+        }
+        }) 
+    }
+
+    var laWeather = function () {
+        $.ajax({
+        url: 'https://api.openweathermap.org/data/2.5/weather?id=5368381&APPID=9ded4d8a3ca84e83be4462cc2ae065b2',
+        success: function(data){
+            var tempInGrad= (data.main.temp - 273.15);
+            var htmltoadd = "<sup>" +tempInGrad.toFixed(0) + "°C</sup>"
+            document.getElementById('laLabel').insertAdjacentHTML("beforeend", htmltoadd)
+        }
+        }) 
+    }
+
+    var nyWeather = function () {
+        $.ajax({
+        url: 'https://api.openweathermap.org/data/2.5/weather?id=5128581&APPID=9ded4d8a3ca84e83be4462cc2ae065b2',
+        success: function(data){
+            var tempInGrad= (data.main.temp - 273.15);
+            var htmltoadd = "<sup>" +tempInGrad.toFixed(0) + "°C</sup>"
+            document.getElementById('nyLabel').insertAdjacentHTML("beforeend", htmltoadd)
+        }
+        }) 
+    }
+        update();
+        jakeOnlineCheck();
+        grimmmzOnlineCheck();
+        tokyoWeather();
+        germanyWeather();
+        laWeather();
+        nyWeather();
+        setInterval(update, 1000)
+        setInterval(jakeOnlineCheck, 5000)
+		setInterval(grimmmzOnlineCheck, 5000)
+    });
+
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
