@@ -21,10 +21,11 @@ var TextScramble = function () {
 var el = document.querySelector('.hacker-text'); 
 var fx = new TextScramble(el); 
 var next = function next() { 
-    fx.setText("xD33m").then(function () { 
-        setTimeout(next2, 2000); 
+    fx.setText(faker.hacker.phrase()).then(function () { 
+        setTimeout(next2, 3000); 
     }); 
 }; 
+console.log();
 var next2 = function next2() { 
     fx.setText("xD33m.github.io").then(function () { 
         setTimeout(next3, 3000); 
