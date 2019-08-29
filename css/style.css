@@ -1,10 +1,14 @@
 body {
   font-family: 'Roboto' !important;
+  color: lightblue !important;
+  height: 100%;
 }
 
 .hacker-text {
   text-align: center;
-  margin-top: 10%;
+  margin-top: 5%;
+  position: absolute;
+  width: 80%;
 }
 
 .container {
@@ -27,13 +31,26 @@ label {
                                   supported by Chrome and Opera */
 }
 
+.neon {
+  color: #fff;
+  text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 40px #0ff,
+      0 0 80px #0ff,
+      0 0 90px #0ff,
+      0 0 100px #0ff,
+      0 0 150px #0ff;
+}
+
 #randomDiv {
   display: none;
   width: max-content;
 }
 
 #randomCityInput {
-  background-color: grey;
+  /* background-color: grey; */
   color: black;
 }
 
@@ -50,10 +67,6 @@ input::-ms-input-placeholder { /* Microsoft Edge */
   color: lightseagreen !important;
 }
 
-body {
-    background: grey;
-}
-
 sup {
   font-size: 30px;
   top: -27px;
@@ -63,7 +76,11 @@ sup {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 13%;
     flex-wrap: wrap;
     margin-right: 10px;
+    margin-top: 20%;
 }
+
+/* #allFlex div {
+  margin-right: 5%;
+} */

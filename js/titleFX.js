@@ -1,23 +1,38 @@
-var randomQuote;
-var backupQuote;
+var randomQuote = "";
+var backupQuote = "" ;
+var requestFailed = false;
 $(document).ready(function() {
     $.ajax({
         url: 'http://quotes.rest/qod.json?category=funny',
+        error: function(xhr, status, error){
+            getBackupQuote(error, false);
+        },
         success: function(data){
             randomQuote = data.contents.quotes[0].quote;
-        }, 
+            getBackupQuote(randomQuote, true)
+        },
     }) 
-    $.ajax({
-        url:'https://cors-anywhere.herokuapp.com/'+ 'https://www.brainyquote.com/quote_of_the_day'
-    }).then(function(data){
-        var html = $(data);
-        backupQuote = getMetaContent(html, 'twitter:description')
-    })  
-    function getMetaContent(html, name) {
-        return html.filter(
-        (index, tag) => tag && tag.name && tag.name == name).attr('content');
-    }
 });
+
+function getBackupQuote(message, success){
+    if(success){
+        randomQuote = message;
+    }else {
+        console.log("QUOTE FETCH FAILED: " + message);
+        // get backup quote
+        $.ajax({
+            url:'https://cors-anywhere.herokuapp.com/'+ 'https://www.brainyquote.com/quote_of_the_day'
+        }).then(function(data){
+            randomQuote = getMetaContent($(data), 'twitter:description');
+        }) 
+    }
+}
+
+function getMetaContent(html, name) {
+    return html.filter(
+    (index, tag) => tag && tag.name && tag.name == name).attr('content');
+}
+
 var _createClass = function () { 
     function defineProperties(target, props) { 
         for (var i = 0; i < props.length; i++) { 
@@ -96,20 +111,12 @@ var fx = new TextScramble(el);
 
 
 var next = function next() {
-    if(randomQuote){
-        fx.setText(randomQuote).then(function () { 
-            setTimeout(next2, 3000); 
-        }); 
-    }else {
-        fx.setText(backupQuote).then(function () { 
-            setTimeout(next2, 3000); 
-        });
-    }
-    
+    fx.setText('xD33m.github.com').then(function () { 
+        setTimeout(next2, 3000); 
+    }); 
 }; 
-console.log();
 var next2 = function next2() { 
-    fx.setText("xD33m.github.io").then(function () { 
+    fx.setText("(づ｡◕‿‿◕｡)づ").then(function () { 
         setTimeout(next3, 3000); 
     }); 
 }; 
@@ -119,8 +126,14 @@ var next3 = function next3() {
     }); 
 };
 var next4 = function next4() { 
-    fx.setText('Times').then(function () { 
-        setTimeout(next, 3000); 
-    }); 
+    if(randomQuote){
+        fx.setText(randomQuote).then(function () { 
+            setTimeout(next, 3000); 
+        }); 
+    }else {
+        fx.setText(backupQuote).then(function () { 
+            setTimeout(next, 3000); 
+        });
+    }
 };
 next();

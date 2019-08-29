@@ -102,7 +102,6 @@ $(document).ready(function() {
                     var regexStr = randomCityName.match(/\/([A-z])\w+/g)[0].substring(1).replace('_', ' ');
                     $.ajax({
                         url: 'https://api.openweathermap.org/data/2.5/weather?q='+ regexStr +'&APPID=9ded4d8a3ca84e83be4462cc2ae065b2',
-                        contentType: "application/json",
                         dataType: 'json',
                         success: function(data){
                             var tempInGrad= (data.main.temp - 273.15);
@@ -124,8 +123,7 @@ $(document).ready(function() {
         // Jake
         $.ajax({ // jakes user ID 11249217
             url: 'https://api.twitch.tv/helix/streams?client_id=11249217&user_login=jakenbakelive',
-            contentType: "application/json",
-            dataType: 'jsonp',
+            dataType: 'json',
             beforeSend: function(xhr) {
                 xhr.setRequestHeader('Client-ID', 'kzkjmy0i3yp6hb814robifymb365rb')
             }, 
@@ -144,8 +142,7 @@ $(document).ready(function() {
         // Grimmmz
         $.ajax({
             url: 'https://api.twitch.tv/helix/streams?user_login=grimmmz',
-            contentType: "application/json",
-            dataType: 'jsonp',
+            dataType: 'json',
             beforeSend: function(xhr) {
                 xhr.setRequestHeader('Client-ID', 'kzkjmy0i3yp6hb814robifymb365rb')
             }, 
@@ -167,8 +164,7 @@ $(document).ready(function() {
         // Tokyo
         $.ajax({
             url: 'https://api.openweathermap.org/data/2.5/weather?q=Tokyo&APPID=9ded4d8a3ca84e83be4462cc2ae065b2',
-            contentType: "application/json",
-            dataType: 'jsonp',
+            dataType: 'json',
             success: function(data){
                 var tempInGrad= (data.main.temp - 273.15);
                 var htmltoadd = "<sup>" +tempInGrad.toFixed(0) + "°C</sup>"
@@ -178,8 +174,7 @@ $(document).ready(function() {
         // Germany
         $.ajax({
             url: 'https://api.openweathermap.org/data/2.5/weather?q=stuttgart&APPID=9ded4d8a3ca84e83be4462cc2ae065b2',
-            contentType: "application/json",
-            dataType: 'jsonp',
+            dataType: 'json',
             success: function(data){
                 var tempInGrad= (data.main.temp - 273.15);
                 var htmltoadd = "<sup>" +tempInGrad.toFixed(0) + "°C</sup>"
@@ -189,8 +184,7 @@ $(document).ready(function() {
         // Los Angeles
         $.ajax({
             url: 'https://api.openweathermap.org/data/2.5/weather?id=5368381&APPID=9ded4d8a3ca84e83be4462cc2ae065b2',
-            contentType: "application/json",
-            dataType: 'jsonp',
+            dataType: 'json',
             success: function(data){
                 var tempInGrad= (data.main.temp - 273.15);
                 var htmltoadd = "<sup>" +tempInGrad.toFixed(0) + "°C</sup>"
@@ -200,8 +194,7 @@ $(document).ready(function() {
         // New York
         $.ajax({
         url: 'https://api.openweathermap.org/data/2.5/weather?id=5128581&APPID=9ded4d8a3ca84e83be4462cc2ae065b2',
-        contentType: "application/json",
-        dataType: 'jsonp',
+        dataType: 'json',
         success: function(data){
                 var tempInGrad= (data.main.temp - 273.15);
                 var htmltoadd = "<sup>" +tempInGrad.toFixed(0) + "°C</sup>"
@@ -213,6 +206,6 @@ $(document).ready(function() {
 
     update();
     setInterval(update, 1000)
-    twitchOnlineCheck();
-    setInterval(twitchOnlineCheck, 60000)
+    // twitchOnlineCheck();
+    // setInterval(twitchOnlineCheck, 60000)
 });
