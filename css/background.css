@@ -55,26 +55,6 @@ body {
   box-shadow: 1045px 1404px #FFF , 83px 1651px #FFF , 1180px 59px #FFF , 165px 196px #FFF , 1855px 1981px #FFF , 363px 823px #FFF , 1719px 1596px #FFF , 1611px 990px #FFF , 806px 1271px #FFF , 190px 1668px #FFF , 556px 414px #FFF , 1689px 214px #FFF , 1037px 1130px #FFF , 1118px 1865px #FFF , 1871px 422px #FFF , 1499px 666px #FFF , 1535px 380px #FFF , 1256px 1741px #FFF , 1382px 1270px #FFF , 143px 547px #FFF , 997px 1044px #FFF , 1619px 1978px #FFF , 702px 1347px #FFF , 1086px 1836px #FFF , 715px 1123px #FFF , 1100px 848px #FFF , 1989px 1383px #FFF , 28px 1171px #FFF , 1142px 424px #FFF , 1761px 195px #FFF , 161px 421px #FFF , 483px 1626px #FFF , 638px 1065px #FFF , 1001px 418px #FFF , 1022px 353px #FFF , 1741px 227px #FFF , 373px 1351px #FFF , 784px 254px #FFF , 1376px 1928px #FFF , 100px 1931px #FFF , 1166px 1233px #FFF , 962px 849px #FFF , 889px 1478px #FFF , 1901px 1174px #FFF , 555px 1056px #FFF , 1955px 370px #FFF , 1694px 1436px #FFF , 1370px 1401px #FFF , 432px 1924px #FFF , 918px 750px #FFF , 1900px 109px #FFF , 1915px 942px #FFF , 394px 1095px #FFF , 152px 1095px #FFF , 1538px 1730px #FFF , 770px 588px #FFF , 333px 1583px #FFF , 232px 1065px #FFF , 304px 259px #FFF , 1755px 606px #FFF , 129px 756px #FFF , 935px 1649px #FFF , 404px 1676px #FFF , 477px 1283px #FFF , 54px 1373px #FFF , 1064px 536px #FFF , 1895px 209px #FFF , 1427px 1625px #FFF , 337px 1117px #FFF , 833px 1831px #FFF , 1477px 464px #FFF , 686px 1390px #FFF , 1931px 67px #FFF , 1178px 1844px #FFF , 1724px 897px #FFF , 211px 1941px #FFF , 1014px 1323px #FFF , 404px 439px #FFF , 624px 1360px #FFF , 1157px 466px #FFF , 1963px 442px #FFF , 622px 1729px #FFF , 1757px 112px #FFF , 190px 959px #FFF , 975px 1337px #FFF , 284px 101px #FFF , 1116px 1247px #FFF , 43px 237px #FFF , 223px 1084px #FFF , 1473px 529px #FFF , 1753px 667px #FFF , 1225px 1621px #FFF , 443px 203px #FFF , 35px 1490px #FFF , 1725px 1331px #FFF , 481px 1806px #FFF , 632px 1203px #FFF , 1525px 1986px #FFF , 659px 1060px #FFF , 188px 1538px #FFF;
 }
 
-#title {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  color: #FFF;
-  text-align: center;
-  font-family: "lato", sans-serif;
-  font-weight: 300;
-  font-size: 50px;
-  letter-spacing: 10px;
-  margin-top: -60px;
-  padding-left: 10px;
-}
-#title span {
-  background: -webkit-linear-gradient(white, #38495a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 @keyframes animStar {
   from {
     transform: translateY(0px);
