@@ -77,10 +77,5 @@ sup {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    margin-right: 10px;
     margin-top: 20%;
 }
-
-/* #allFlex div {
-  margin-right: 5%;
-} */

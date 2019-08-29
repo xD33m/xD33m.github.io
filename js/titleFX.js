@@ -111,7 +111,7 @@ var fx = new TextScramble(el);
 
 
 var next = function next() {
-    fx.setText('xD33m.github.com').then(function () { 
+    fx.setText('xD33m.github.io').then(function () { 
         setTimeout(next2, 3000); 
     }); 
 }; 
