@@ -112,27 +112,27 @@ var fx = new TextScramble(el);
 
 var next = function next() {
     fx.setText('xD33m.github.io').then(function () { 
-        setTimeout(next2, 3000); 
+        setTimeout(next2, 6000); 
     }); 
 }; 
 var next2 = function next2() { 
     fx.setText("(づ｡◕‿‿◕｡)づ").then(function () { 
-        setTimeout(next3, 3000); 
+        setTimeout(next3, 6000); 
     }); 
 }; 
 var next3 = function next3() { 
     fx.setText('❤❤❤').then(function () { 
-        setTimeout(next4, 3000); 
+        setTimeout(next4, 6000); 
     }); 
 };
 var next4 = function next4() { 
     if(randomQuote){
         fx.setText(randomQuote).then(function () { 
-            setTimeout(next, 3000); 
+            setTimeout(next, 6000); 
         }); 
     }else {
         fx.setText(backupQuote).then(function () { 
-            setTimeout(next, 3000); 
+            setTimeout(next, 6000); 
         });
     }
 };
