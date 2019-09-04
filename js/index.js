@@ -206,6 +206,6 @@ $(document).ready(function() {
 
     update();
     setInterval(update, 1000)
-    // twitchOnlineCheck();
-    // setInterval(twitchOnlineCheck, 60000)
+    twitchOnlineCheck();
+    setInterval(twitchOnlineCheck, 60000)
 });
