@@ -19,7 +19,7 @@ h2{
 }
 
 label {
-    color: lightseagreen;
+    color: rgba(133,235,255,0.8);
     font-size: x-large;
     font-size: 50px;
     -webkit-touch-callout: none; /* iOS Safari */
