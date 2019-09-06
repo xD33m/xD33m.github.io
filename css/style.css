@@ -15,7 +15,14 @@ body {
   width: 80%;
 }
 h2{
+    margin-top: 0px;
     font-size: 50px;
+    perspective: 1000px; 
+	  perspective-origin: 200px 40px;
+}
+
+#streams{
+  margin-top:50px;
 }
 
 label {
