@@ -130,11 +130,11 @@ $(document).ready(function() {
             success: function(data){
                 if(Object.keys(data.data).length == 0){
                     $(function() {
-                        $('#jakeStatus').html('Jake is <span style="color: red"> OFFLINE </span>');
+                        $('#jakeStatus').html('Jake is <span class="streamOffline"> OFFLINE </span>');
                     });
                 }else{
                     $(function() {
-                        $('#jakeStatus').html('Jake is <span style="color: green"> ONLINE </span>');
+                        $('#jakeStatus').html('Jake is <span class="streamOnline"> ONLINE </span>');
                     });
                 }
             }
@@ -149,11 +149,11 @@ $(document).ready(function() {
             success: function(data){
                 if(Object.keys(data.data).length == 0){
                     $(function() {
-                        $('#grimmmzStatus').html('Grimmmz is <span style="color: red"> OFFLINE </span>');
+                        $('#grimmmzStatus').html('Grimmmz is <span class="streamOffline"> OFFLINE </span>');
                     });
                 }else{
                     $(function() {
-                        $('#grimmmzStatus').html('Grimmmz is <span style="color: green"> ONLINE </span>');
+                        $('#grimmmzStatus').html('Grimmmz is <span class="streamOnline"> ONLINE </span>');
                     });
                 }
             }
